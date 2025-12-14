@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZenSite | Demo</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:url('background.png') no-repeat center center fixed;
+  background-size:cover;
+  color:#fff;
+  animation:fade .8s ease;
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.overlay{
+  min-height:100vh;
+  background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.75));
+}
+
+header{
+  position:fixed;top:0;width:100%;
+  display:flex;justify-content:space-between;
+  padding:16px 28px;
+  background:rgba(0,0,0,.75);
+  z-index:1000;
+}
+header a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:16px;
+  font-weight:600;
+}
+
+main{padding-top:120px;text-align:center}
+
+/* SLIDER */
+.slider{
+  max-width:1100px;
+  margin:40px auto;
+  overflow:hidden;
+}
+.slides{
+  display:flex;
+  transition:transform 1.2s ease;
+}
+.slides img{
+  width:100%;
+  min-height:420px;
+  max-height:520px;
+  object-fit:contain;
+  background:#000;
+}
+@media(max-width:768px){
+  .slides img{min-height:260px;max-height:320px}
+}
+
+/* REVIEWS SLIDER */
+.reviews{
+  max-width:900px;
+  margin:80px auto 40px;
+  padding:0 20px;
+}
+.reviews h2{margin-bottom:24px}
+.reviews-track{
+  display:flex;
+  transition:transform 1s ease;
+}
+.review{
+  min-width:100%;
+  background:rgba(18,18,24,.9);
+  padding:28px;
+  border-radius:18px;
+  color:#ddd;
+}
+.review span{
+  display:block;
+  margin-top:10px;
+  color:#fff;
+  font-weight:700;
+}
+.back{
+  display:inline-block;
+  margin-top:20px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+}
+</style>
+</head>
+
+<body>
+<div class="overlay">
+
+<header>
+  <div>ZenSite</div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="planes.html">Planes</a>
+  </nav>
+</header>
+
+<main>
+  <a class="back" href="index.html">⬅ Volver</a>
+
+  <div class="slider">
+    <div class="slides" id="slides">
+      <img src="demo1.png">
+      <img src="demo2.png">
+      <img src="demo3.png">
+      <img src="demo4.png">
+      <img src="demo5.png">
+    </div>
+  </div>
+
+  <section class="reviews">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="reviews-track" id="reviews">
+      <div class="review">“Diseño limpio y profesional, ahora mi negocio se ve serio.”<span>— Carlos M.</span></div>
+      <div class="review">“Rápidos, claros y con muy buen gusto.”<span>— Andrea R.</span></div>
+      <div class="review">“La web carga rápido y se ve perfecta en el móvil.”<span>— Luis G.</span></div>
+      <div class="review">“Excelente atención y resultado final.”<span>— María P.</span></div>
+    </div>
+  </section>
+</main>
+
+</div>
+
+<script>
+/* Demo slider */
+let i=0;
+const slides=document.getElementById("slides");
+setInterval(()=>{
+  i=(i+1)%5;
+  slides.style.transform=`translateX(-${i*100}%)`;
+},4500);
+
+/* Reviews slider */
+let r=0;
+const reviews=document.getElementById("reviews");
+setInterval(()=>{
+  r=(r+1)%4;
+  reviews.style.transform=`translateX(-${r*100}%)`;
+},5000);
+</script>
+
+</body>
+</html>
